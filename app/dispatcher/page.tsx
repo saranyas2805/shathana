@@ -4,7 +4,8 @@ import Link from "next/link";
 import {Activity,AlertTriangle,ArrowLeft,CheckCircle,Clock3,MapPinned,Radio,RefreshCw,RotateCcw,Siren,Truck} from "lucide-react";
 import MapView from "@/components/Map";
 import type {Incident,RescueUnit,Report} from "@/lib/types";
-import {freshDemoState,haversine,loadDemoState,saveDemoState} from "@/lib/demo-data";
+import {freshDemoState,loadDemoState,saveDemoState} from "@/lib/demo-data";
+import {haversine} from "@/lib/analysis";
 
 export default function Dispatcher(){
  const[incidents,setIncidents]=useState<Incident[]>([]);const[units,setUnits]=useState<RescueUnit[]>([]);const[reports,setReports]=useState<Report[]>([]);const[selected,setSelected]=useState<Incident>();const[message,setMessage]=useState("");const[busy,setBusy]=useState(false);
