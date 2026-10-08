@@ -1,2 +1,0 @@
-import {NextResponse} from "next/server";import {serverSupabase} from "@/lib/server-supabase";
-export async function POST(req:Request){try{const {incident_id}=await req.json();if(!incident_id)return NextResponse.json({error:"incident_id required"},{status:400});const db=serverSupabase();const {data,error}=await db.rpc("assign_nearest_unit",{p_incident_id:incident_id});if(error)throw error;return NextResponse.json({ok:true,...data});}catch(e){console.error(e);return NextResponse.json({error:"Dispatch failed. Check database configuration."},{status:500})}}
