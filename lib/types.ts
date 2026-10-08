@@ -1,4 +1,4 @@
-export type Severity="CRITICAL"|"HIGH"|"MEDIUM"|"LOW"; export type IncidentStatus="NEW"|"TRIAGED"|"DISPATCHED"|"RESOLVED"; export type UnitStatus="AVAILABLE"|"ASSIGNED"|"EN_ROUTE"|"ON_SCENE"|"COMPLETED";
+export type Severity="CRITICAL"|"HIGH"|"MEDIUM"|"LOW"; export type IncidentStatus="NEW"|"TRIAGED"|"ACCEPTED"|"DISPATCHED"|"RESOLVED"; export type UnitStatus="AVAILABLE"|"ASSIGNED"|"EN_ROUTE"|"ON_SCENE"|"COMPLETED";
 export type Category="FLOOD"|"FIRE"|"MEDICAL"|"BUILDING COLLAPSE"|"ROAD BLOCKAGE"|"OTHER";
 export interface Incident{id:string;title:string;category:Category;description:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];report_count:number;status:IncidentStatus;created_at:string;updated_at:string}
 export interface Report{id:string;incident_id:string;description:string;source:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];created_at:string}
