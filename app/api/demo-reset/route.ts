@@ -1,1 +1,0 @@
-import {NextResponse} from "next/server";import {serverSupabase} from "@/lib/server-supabase";export async function POST(){try{const db=serverSupabase();const {error}=await db.rpc("reset_demo_data");if(error)throw error;return NextResponse.json({ok:true})}catch(e){console.error(e);return NextResponse.json({error:"Demo reset unavailable"},{status:500})}}
