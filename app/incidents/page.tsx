@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function Incidents(){return <main style={{padding:32,color:'#fff',fontFamily:'sans-serif'}}><h1>🚨 Incident Management</h1><p>All SOS incidents, priority and dispatch status.</p><Link href='/dispatcher'>← Command Center</Link></main>;
