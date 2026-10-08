@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function Rescue(){return <main style={{padding:32,color:'#fff',fontFamily:'sans-serif'}}><h1>🧑‍🚒 Rescue Team</h1><p>Assignments, navigation, arrival and completion workflow.</p><Link href='/dispatcher'>← Command Center</Link></main>;
