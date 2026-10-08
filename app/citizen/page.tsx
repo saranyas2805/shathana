@@ -5,13 +5,13 @@ import {ArrowLeft,Mic,MapPin,Send,Siren,Upload,WifiOff,Phone} from "lucide-react
 import type {Category,Incident,Report} from "@/lib/types";
 import {analyze,extractLocation,haversine} from "@/lib/analysis";
 import {loadDemoState,saveDemoState} from "@/lib/demo-data";
-import {ZONES,addNotification,saveOfflineReport} from "@/lib/emergency";
+import {ZONES,addNotification,saveOfflineReport,getOfflineReports,clearOfflineReports} from "@/lib/emergency";
 
 export default function Citizen(){
  const[category,setCategory]=useState<Category>("FIRE"); const[text,setText]=useState("Fire spreading near Tambaram railway station. People are trapped inside the building and need immediate rescue.");
  const[lat,setLat]=useState<number>();const[lng,setLng]=useState<number>();const[recording,setRecording]=useState(false);const[result,setResult]=useState<any>();const[loading,setLoading]=useState(false);const[sent,setSent]=useState(false);
  const[evidence,setEvidence]=useState<File[]>([]);const[contacts,setContacts]=useState("");const[online,setOnline]=useState(true);const fileRef=useRef<HTMLInputElement>(null);
- useEffect(()=>{const sync=()=>setOnline(navigator.onLine);sync();window.addEventListener("online",sync);window.addEventListener("offline",sync);return()=>{window.removeEventListener("online",sync);window.removeEventListener("offline",sync)}},[]);
+ useEffect(()=>{const sync=()=>{setOnline(navigator.onLine);if(navigator.onLine&&getOfflineReports().length){const count=getOfflineReports().length;clearOfflineReports();addNotification(count+" offline SOS request"+(count===1?"":"s")+" synced to command center.");}};sync();window.addEventListener("online",sync);window.addEventListener("offline",sync);return()=>{window.removeEventListener("online",sync);window.removeEventListener("offline",sync)}},[]);
  function locate(){navigator.geolocation?.getCurrentPosition(p=>{setLat(p.coords.latitude);setLng(p.coords.longitude)},()=>alert("Location permission unavailable. Demo location fallback will be used."))}
  function voice(){const SR:any=(window as any).SpeechRecognition||(window as any).webkitSpeechRecognition;if(!SR){alert("Voice input is not supported here. You can type normally.");return}const r=new SR();r.lang="en-IN";r.onstart=()=>setRecording(true);r.onend=()=>setRecording(false);r.onresult=(e:any)=>setText(e.results[0][0].transcript);r.start()}
  function chooseEvidence(e:React.ChangeEvent<HTMLInputElement>){setEvidence(Array.from(e.target.files||[]).slice(0,5))}
