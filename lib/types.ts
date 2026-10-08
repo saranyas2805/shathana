@@ -1,6 +1,6 @@
 export type Severity="CRITICAL"|"HIGH"|"MEDIUM"|"LOW"; export type IncidentStatus="NEW"|"TRIAGED"|"ACCEPTED"|"DISPATCHED"|"RESOLVED"; export type UnitStatus="AVAILABLE"|"ASSIGNED"|"EN_ROUTE"|"ON_SCENE"|"COMPLETED";
 export type Category="FLOOD"|"FIRE"|"MEDICAL"|"BUILDING COLLAPSE"|"ROAD BLOCKAGE"|"OTHER";
-export interface Incident{id:string;title:string;category:Category;description:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];report_count:number;status:IncidentStatus;created_at:string;updated_at:string}
-export interface Report{id:string;incident_id:string;description:string;source:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];created_at:string}
+export interface Incident{id:string;title:string;category:Category;description:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];report_count:number;status:IncidentStatus;created_at:string;updated_at:string;dispatcher?:string;status_history?:{status:string;at:string;by?:string}[];evidence?:string[]}
+export interface Report{id:string;incident_id:string;description:string;source:string;latitude:number;longitude:number;location_text:string;severity:Severity;severity_score:number;severity_reasons:string[];created_at:string;evidence?:string[];dispatcher?:string}
 export interface RescueUnit{id:string;name:string;type:string;latitude:number;longitude:number;status:UnitStatus;current_incident_id?:string|null;updated_at:string}
 export interface Dispatch{id:string;incident_id:string;unit_id:string;assigned_at:string;status:string;completed_at?:string|null}
