@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function Analytics(){return <main style={{padding:32,color:'#fff',fontFamily:'sans-serif'}}><h1>📈 Incident Analytics</h1><p>Severity distribution • Response performance • Active vs resolved • SOS trends.</p><Link href='/dispatcher'>← Command Center</Link></main>;
