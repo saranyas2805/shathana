@@ -1,1 +1,8 @@
-__pycache__/\nvenv/\ndisastermesh.db\n
+__pycache__/
+venv/
+node_modules/
+.next/
+.env
+.env.local
+.env.*.local
+disastermesh.db
