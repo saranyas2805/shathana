@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function RescueUnits(){return <main style={{padding:32,color:'#fff',fontFamily:'sans-serif'}}><h1>🚑 Rescue Units</h1><p>Monitor available, assigned and active rescue teams.</p><Link href='/dispatcher'>← Command Center</Link></main>;
