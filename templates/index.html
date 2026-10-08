@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DisasterMesh | Crisis Command Center</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head><body>
+<header><div><div class="logo">⚠ DISASTERMESH</div><div class="tag">PUBLIC SAFETY • CRISIS GOVERNANCE</div></div><div class="live">● LIVE COMMAND CENTER</div></header>
+<main>
+<section class="hero"><div><h1>One crisis. One command center.</h1><p>Fuse citizen reports, identify urgency, cluster nearby incidents and dispatch the right field unit.</p></div><button class="demo" onclick="demo()">▶ 3-MINUTE DEMO</button></section>
+<section class="stats">
+<div><span>REPORTS</span><b id="reports">0</b></div><div><span>INCIDENTS</span><b id="incidents">0</b></div>
+<div class="red"><span>CRITICAL</span><b id="critical">0</b></div><div><span>AVAILABLE UNITS</span><b id="available">0</b></div><div><span>ACTIVE CLUSTERS</span><b id="clusters">0</b></div>
+</section>
+<section class="layout">
+<div class="card"><h2>🚨 Citizen Distress Report</h2><p class="muted">Text, voice transcript or image evidence.</p>
+<label>Channel</label><select id="channel"><option value="text">Text</option><option value="voice">Voice transcript</option><option value="image">Image evidence</option></select>
+<label>Emergency report</label><textarea id="desc" placeholder="Example: Building collapse near T Nagar, people trapped inside..."></textarea>
+<div class="two"><div><label>Latitude (optional)</label><input id="lat" placeholder="Auto-detected"></div><div><label>Longitude (optional)</label><input id="lon" placeholder="Auto-detected"></div></div>
+<button class="primary" onclick="submitReport()">SUBMIT SOS</button><div id="result"></div></div>
+<div class="card mapcard"><div class="maptitle"><div><h2>🗺 Live Geospatial Incident Map</h2><p class="muted">Red = critical • orange = high • blue = medium • green = unit</p></div><button onclick="load()">↻</button></div><div id="map"></div></div>
+</section>
+<section class="bottom">
+<div class="card"><h2>📋 Dispatcher Triage</h2><div id="incidentList"></div></div>
+<div class="card"><h2>🚑 Live Unit Status</h2><div id="unitList"></div></div>
+</section>
+</main><div id="toast"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="/static/app.js"></script>
+</body></html>
